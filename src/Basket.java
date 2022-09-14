@@ -4,7 +4,7 @@ import java.io.*;
 public class Basket {
 
     final private Product[] product;
-    int sumProduct = 0;
+    private int sumProduct = 0;
 
     public Basket(Product[] product) {
         this.product = product.clone();
