@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class Basket {
 
     final private Product[] product;
-    int sumProduct = 0;
+    private int sumProduct = 0;
 
     public Basket(Product[] product) {
         this.product = product.clone();
@@ -37,8 +37,8 @@ public class Basket {
 
     public void saveTxt(File textFile) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(textFile);
-        Stream.of(product).forEach(i ->
-                out.printf(i.getName(), i.getPrice(), i.getInBasket()));
+        Stream.of(product).forEach(p ->
+                out.printf(p.getName(), p.getPrice(), p.getInBasket()));
         out.close();
     }
 
