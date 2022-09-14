@@ -28,11 +28,12 @@ public class Basket {
         System.out.println("Итого " + sumProduct + " руб.");
     }
 
-    public void saveBin(File file){
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-        } catch (IOException ex) {
+    public void saveBin(File file) {
+
+        try (FileOutputStream fos = new FileOutputStream(file);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(this);
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -42,6 +43,4 @@ public class Basket {
         ObjectInputStream ois = new ObjectInputStream(fis);
         return (Basket) ois.readObject();
     }
-
-
 }
