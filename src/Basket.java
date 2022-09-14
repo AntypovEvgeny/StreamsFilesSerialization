@@ -29,7 +29,6 @@ public class Basket {
     }
 
     public void saveBin(File file) {
-
         try (FileOutputStream fos = new FileOutputStream(file);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(this);
@@ -38,9 +37,12 @@ public class Basket {
         }
     }
 
-    public static Basket loadFromBinFile(File file) throws IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        return (Basket) ois.readObject();
+    public static void loadFromBinFile(File file){
+        try (FileInputStream fis = new FileInputStream(file);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            ois.readObject();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

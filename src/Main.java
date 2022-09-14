@@ -1,7 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +9,7 @@ public class Main {
             new Product("Молоко", 300)
     };
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) {
         Basket card = new Basket(product);
         int productNumber;
         int productCount;
@@ -23,7 +20,7 @@ public class Main {
         if (basketFile.exists()) {
             System.out.println("Загрузить корзину(нажмите enter)? ");
             if (scanner.nextLine().equals("")) {
-                card = Basket.loadFromBinFile(basketFile);
+                Basket.loadFromBinFile(basketFile);
             }
 
             while (true) {
