@@ -50,7 +50,7 @@ public class Basket {
             int inBasket;
             NumberFormat nf = NumberFormat.getInstance();
             while (scanner.hasNext()) {
-                String[] parts = scanner.nextLine().split("@");
+                String[] parts = scanner.nextLine().split(" ");
                 name = parts[0];
                 price = nf.parse(parts[1]).intValue();
                 inBasket = Integer.parseInt(parts[2]);
